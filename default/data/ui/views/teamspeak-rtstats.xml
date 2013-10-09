@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?><dashboard>
+  <label>Teamspeak Dashboard</label>
+  <row>
+    <table>
+      <title>Active Connections</title>
+      <searchString>sourcetype=teamspeak status=INFO | transaction username startswith=connected endswith=disconnected keepevicted=true | search closed_txn=0 | table username, user_state, user_ip</searchString>
+      <earliestTime>rt-24h</earliestTime>
+      <latestTime>rtnow</latestTime>
+      <option name="wrap">true</option>
+      <option name="rowNumbers">false</option>
+      <option name="dataOverlayMode">none</option>
+      <option name="drilldown">row</option>
+      <option name="count">25</option>
+    </table>
+  </row>
+  <row>
+    <table>
+      <title>Total Connection Time</title>
+      <searchString>sourcetype=teamspeak status=INFO | transaction username startswith=connected endswith=disconnected | eval connection_time=round(duration/60/60, 2) | stats sum(connection_time) by username | sort sum(connection_time) desc | rename sum(connection_time) as "Connection Time in Hours"</searchString>
+      <earliestTime>0</earliestTime>
+      <latestTime>now</latestTime>
+      <option name="wrap">true</option>
+      <option name="rowNumbers">false</option>
+      <option name="dataOverlayMode">none</option>
+      <option name="drilldown">row</option>
+      <option name="count">10</option>
+    </table>
+  </row>
+</dashboard>

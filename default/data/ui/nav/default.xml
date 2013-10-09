@@ -1,0 +1,4 @@
+<nav>
+    <view name="teamspeak-rtstats" default='true' />
+    <view name="flashtimeline"/>
+</nav>
