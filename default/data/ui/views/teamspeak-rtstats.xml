@@ -4,7 +4,7 @@
     <table>
       <title>Active Connections</title>
       <searchString>sourcetype=teamspeak status=INFO | transaction username startswith=connected endswith=disconnected keepevicted=true | search closed_txn=0 | table username, user_state, user_ip</searchString>
-      <earliestTime>rt-24h</earliestTime>
+      <earliestTime>rt-6h</earliestTime>
       <latestTime>rtnow</latestTime>
       <option name="wrap">true</option>
       <option name="rowNumbers">false</option>
